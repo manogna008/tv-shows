@@ -12,6 +12,15 @@ export function App() {
   const [currentTVShow, setCurrentTVShow] = useState();
   const [recommList, setRecommList] = useState([]);
 
+  useEffect(() => {
+    fetchPopulars();
+  }, []);
+
+  useEffect(() => {
+    if (currentTVShow) {
+      fetchRecommd(currentTVShow.id);
+    }
+  }, [currentTVShow]);
   async function fetchPopulars() {
     try {
       const popularTVShowList = await TVShowAPI.fetchPopulars();
@@ -43,16 +52,6 @@ export function App() {
       alert("Something when wrong");
     }
   }
-
-  useEffect(() => {
-    fetchPopulars();
-  }, []);
-
-  useEffect(() => {
-    if (currentTVShow) {
-      fetchRecommd(currentTVShow.id);
-    }
-  }, [currentTVShow]);
 
   function updateCurrentTvShow(tvShow) {
     setCurrentTVShow(tvShow);
