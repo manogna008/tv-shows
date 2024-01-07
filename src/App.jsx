@@ -7,7 +7,7 @@ import { Logo } from "./components/Logo/Logo";
 import logoImg from "./assets/logo.png";
 import { TvShowList } from "./components/TvShowList/TvShowList";
 import { SearchBar } from "./components/SearchBar/SearchBar";
-
+console.log(process.env.REACT_APP_API_KEY_PARAM);
 export function App() {
   const [currentTVShow, setCurrentTVShow] = useState();
   const [recommList, setRecommList] = useState([]);
